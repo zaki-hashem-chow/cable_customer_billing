@@ -11,7 +11,7 @@
                 <a href="/services" class="list-group-item list-group-item-action bg-light">Services</a>
             </li>
             <li>
-                <a href="/users" class="list-group-item list-group-item-action bg-light">Users</a>
+                <a href="/user" class="list-group-item list-group-item-action bg-light">Users</a>
             </li>
             <li>
                 <a href="reports" class="list-group-item list-group-item-action bg-light">Reports</a>

@@ -24,6 +24,10 @@ class CreatePaymentsTable extends Migration
             $table->boolean('sms_sent_status');
             $table->timestamps();
         });
+
+        Schema::table('payments', function (Blueprint $table) {
+            $table->softDeletes();
+        });
     }
 
     /**
@@ -34,5 +38,9 @@ class CreatePaymentsTable extends Migration
     public function down()
     {
         Schema::dropIfExists('payments');
+
+        Schema::table('payments', function (Blueprint $table) {
+            $table->dropSoftDeletes();
+        });
     }
 }

@@ -18,10 +18,13 @@ use Faker\Generator as Faker;
 
 $factory->define(User::class, function (Faker $faker) {
 
+    $gender = $faker->randomElement(['male', 'female']);
+
     return [
         'name' => $faker->name,
         'email' => $faker->email,
         'type' => $faker->boolean,
+        'gender' => $gender,
         'dob' => $faker->date,
         'area' => $faker->streetSuffix,
         'street' => $faker->streetName,
