@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Services;
-use Illuminate\Http\Request;
 use App\Service;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
+
 
 class ServicesController extends Controller
 {
@@ -25,7 +26,7 @@ class ServicesController extends Controller
      */
     public function create()
     {
-        //
+        return view('pages.services-new');
     }
 
     /**
@@ -36,7 +37,19 @@ class ServicesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required|max:255|string',
+            'rate' => 'required|max:999999999|numeric',
+        ]);
+
+        $service = new Service;
+
+        $service->name = $request->input('name');
+        $service->rate = $request->input('rate');
+
+        $service->save();
+
+        return redirect('/services')->with('message', 'New service created successfully.');
     }
 
     /**
@@ -45,7 +58,7 @@ class ServicesController extends Controller
      * @param  \App\Services  $services
      * @return \Illuminate\Http\Response
      */
-    public function show(Services $services)
+    public function show()
     {
         //
     }
@@ -53,12 +66,15 @@ class ServicesController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Services  $services
      * @return \Illuminate\Http\Response
      */
-    public function edit(Services $services)
+    public function edit($id)
     {
-        //
+        if (!is_numeric($id)) {
+            return Redirect::back()->withErrors('msg', 'Illeagal service ID submited.');
+        }
+
+        return view('pages.services-edit', ['service' => Service::find($id)]);
     }
 
     /**
@@ -68,9 +84,25 @@ class ServicesController extends Controller
      * @param  \App\Services  $services
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Services $services)
+    public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'name' => 'required|max:255|string',
+            'rate' => 'required|max:99999999.99|numeric',
+        ]);
+
+        if (!is_numeric($id)) {
+            return Redirect::back()->withErrors('msg', 'Illeagal user ID submited.');
+        }
+
+            $service = Service::find($id);
+
+            $service->name= $request->input('name');
+            $service->rate= $request->input('rate');
+
+            $service->save();
+
+        return redirect('/services')->with('message', 'Service data changed was successfully.');
     }
 
     /**
@@ -79,8 +111,10 @@ class ServicesController extends Controller
      * @param  \App\Services  $services
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Services $services)
+    public function destroy($id)
     {
-        //
+        Service::where('id', $id)->delete();
+
+        return redirect('/services')->with('message', 'Service was successfully Deleted.');
     }
 }
