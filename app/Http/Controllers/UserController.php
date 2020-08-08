@@ -105,7 +105,7 @@ class UserController extends Controller
             return Redirect::back()->withErrors('msg', 'Illeagal user ID submited.');
         }
 
-        return view('pages.user-edit', ['user' => $user = User::find($id)]);
+        return view('pages.user-edit', ['user' => User::find($id)]);
     }
 
     /**
@@ -117,6 +117,7 @@ class UserController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
+            'id' => 'required|integer',
             'name' => 'required|max:255|string',
             'dob' => 'required|date',
             'gender' => 'nullable|max:12|string',
@@ -150,7 +151,7 @@ class UserController extends Controller
 
         $user->save();
 
-        return redirect('/user')->with('message', 'User data was successfully updated.');
+        return redirect('/user')->with('message', 'User data was changed successfully.');
     }
 
     /**
