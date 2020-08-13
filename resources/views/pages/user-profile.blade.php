@@ -45,7 +45,7 @@ Note: {{ $user->note }}
 <form action= '{{ action('UserController@destroy', $user->id) }}' method='POST'>
     @method('DELETE')
     @csrf
-    <button type="submit">Delete User</button>
+    <button type="submit" class="btn btn-danger">Delete User</button>
 </form>
 
 @endsection

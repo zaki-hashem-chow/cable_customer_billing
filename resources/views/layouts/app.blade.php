@@ -16,9 +16,8 @@
     </head>
 
     <body>
-    <div class="container">
+    <div class="container-fluid">
         <!-- Page Content -->
-        <div id="page-content-wrapper">
             @section('header')
                 <div class="row">
                     {{--includes page Header setion--}}
@@ -26,17 +25,19 @@
                 </div>
             @show
 
-            <div id="main" class="row">
+            <div class="row">
                 @section('sidebar')
-                    <div id="sidebar" class="col-md-3">
+                    <div class="col-md-2">
                         {{--includes sidebar setion--}}
                         @include('layouts.includes.sidebar')
                     </div>
                 @show
 
-                <div id='content' class="col-md-9">
+                <div role="main" class="col-md-10">
                     {{--page contents goes here--}}
-                    @yield('content')
+                    <div class="container">
+                        @yield('content')
+                    </div>
 
                 </div>
             </div>
@@ -47,7 +48,6 @@
                     @include('layouts.includes.footer')
                 </div>
             @show
-        </div>
     </div>
 
         {{--munu toggle js script--}}
