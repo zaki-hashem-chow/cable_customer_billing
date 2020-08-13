@@ -1,22 +1,11 @@
 @section('head-assets')
 {{-- Bootstrap Core CSS --}}
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    {{-- Scripts --}}
-    <script src="{{ asset('js/app.js') }}" defer></script>
-    {{-- Custom CSS --}}
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <link href="{!! asset('css/admin.css') !!}" rel="stylesheet">
-
-	{{-- Morris Charts CSS --}}
-    <link href="{!! asset('css/plugins/morris.css') !!}" rel="stylesheet">
 
     {{-- Custom Fonts --}}
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-
-    {{-- Custom CSS --}}
-    <link href="{{ asset('css/zakiStyle.css') }}" rel="stylesheet">
 
     {{-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries --}}
     {{-- WARNING: Respond.js doesn't work if you view the page via file:// --}}

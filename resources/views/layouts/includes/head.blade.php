@@ -9,4 +9,5 @@
     <meta name="author" content="">
     <title>{{ config('app.name', 'Laravel') }}</title>
     <meta name="description" content="@yield('description')">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 @endsection
