@@ -35,17 +35,6 @@ E-mail: {{ $user->email }}
 Note: {{ $user->note }}
 </div>
 
-
-<table>
-
-</table>
-
-<a href="{{ url('/user/'.$user->id.'/edit') }}"> <button type="submit">Edit Customer Info</button></a>
-
-<form action= '{{ action('UserController@destroy', $user->id) }}' method='POST'>
-    @method('DELETE')
-    @csrf
-    <button type="submit" class="btn btn-danger">Delete User</button>
-</form>
+<a href="{{ url('/user/'.$user->id.'/edit') }}"> <button type="submit" class="btn btn-primary">Edit Customer Info</button></a>
 
 @endsection

@@ -52,7 +52,7 @@
             </div>
         </div>
         <div class="col-sm">
-             <img src = <?php echo (asset('storage/'.$company->logo)); ?> height="150px" width="150px" class="img-thumbnail rounded float-right" alt = "Company Logo">
+             <img src = <?php print (asset('storage/'.$company->logo)); ?> height="150px" width="150px" class="img-thumbnail rounded float-right" alt = "Company Logo">
         </div>
     </div>
 @endsection

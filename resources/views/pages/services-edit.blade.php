@@ -15,22 +15,25 @@
         <form action="{{ url('/services/'.$service->id) }}" method="POST">
             @method('PUT')
             @csrf
-            <div class="">
-                <label for="name"></label>
-            <input type="text" name="name" id="name" value="{{ $service->name }}"/>
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" name="name" id="name" class="form-control" value="{{ $service->name }}"/>
             </div>
-            <div class="">
-                <label for="rate"></label>
-                <input type="text" name="rate" id="rate" value="{{ $service->rate }}"/>
+            <div class="form-group">
+                <label for="rate">Rate</label>
+                <input type="text" name="rate" id="rate" class="form-control" value="{{ $service->rate }}"/>
             </div>
-
-            <button type="submit">Submit</button>
+            <div class="form-group">
+                <label for="discount">Discount</label>
+                <input type="text" name="discount" id="discount" class="form-control"  value="{{ $service->discount }}" />
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
         </form>
 
-        <form action= '{{ action('ServicesController@destroy', $user->id) }}' method='POST'>
+        <form action= '{{ action('ServicesController@destroy', $service->id) }}' method='POST'>
             @method('DELETE')
             @csrf
-            <button type="submit">Delete Service</button>
+            <button type="submit" class="btn btn-danger">Delete Service</button>
         </form>
     </div>
 @endsection
