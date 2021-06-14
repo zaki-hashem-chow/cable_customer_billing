@@ -15,7 +15,7 @@
     <div class="row">
         <form action="{{ url('/company')}}" method="POST" enctype="multipart/form-data">
             @csrf
-            <h3>New Company Data</h3>
+            <h3>Company Data</h3>
             <div class="form-group">
                     <label for="name">Name</label>
                     <input type="text" name='name' id="name" class="form-control" placeholder="Company Name"/>

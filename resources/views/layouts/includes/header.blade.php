@@ -17,7 +17,7 @@
           <a href="{{ route('logout') }}"
                     onclick="event.preventDefault();
                     document.getElementById('logout-form').submit();">
-                    <i class="fa fa-fw fa-power-off"></i> Log Out
+                        <i class="fa fa-fw fa-power-off"></i> Log Out
           </a>
         </div>
       </li>

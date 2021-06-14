@@ -19,8 +19,8 @@ class CreateCustomerServicesTable extends Migration
             $table->foreignId('services_id')->constrained();
             $table->float('discount', 10, 2);
             $table->timestamp('service_start_date');
-            $table->boolean('connection_status');
-            $table->date('billing_date');
+            $table->tinyInteger('connection_status');
+            $table->string('billing_date');
             $table->timestamps();
         });
 

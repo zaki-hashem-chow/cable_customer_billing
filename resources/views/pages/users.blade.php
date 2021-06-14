@@ -50,22 +50,24 @@
             <button type="submit" class="btn btn-primary">Search</button>
         </div>
     </form>
-<a href="{{ url('/user') }}"><button type="submit" class="btn btn-primary">Reset Search/Filter</button></a>
-     <div class="row">
+
+    <a href="{{ url('/user') }}"><button type="submit" class="btn btn-primary">Reset Search/Filter</button></a>
+
+    <div class="row">
         <a href="{{ url('/user/create') }}"><button type="submit" class="btn btn-primary">Add New Customer</button></a>
-     </div>
-
-
+    </div>
 
     <div class="row">
         <table class="table">
             <thead>
                 <tr>
-                    <th scope="col">Customer ID</th>
+                    <th scope="col"> ID </th>
                     <th scope="col">Name</th>
                     <th scope="col">Age</th>
                     <th scope="col">Area</th>
+                    <th scope="col">Customer Services</th>
                     <th scope="col">View Profile</th>
+                    <th scope="col">Delete Customer</th>
                 </tr>
             </thead>
             <tbody>
@@ -73,9 +75,22 @@
                   <tr>
                     <td>{{ $user->id }}</td>
                     <td>{{ $user->name }}</td>
-                    <td>{{ $user->dob }}</td> <!-- calculate age-->
+                    <td><?php
+                            $from = new DateTime($user->dob);
+                            $to   = new DateTime('today');
+                            print $from->diff($to)->y." years";
+                        ?>
+                    </td>
                     <td>{{ $user->area }}</td>
+                    <td><a href="{{ url('customer-services/'.$user->id) }}"><button type="submit" class="btn btn-primary">Services</button></a></td>
                     <td><a href="{{ url('user/'.$user->id) }}"><button type="submit" class="btn btn-primary">Profile</button></a></td>
+                    <td>
+                        <form action= '{{ action('UserController@destroy', $user->id) }}' method='POST'>
+                            @method('DELETE')
+                            @csrf
+                            <button type="submit" class="btn btn-danger">Delete</button>
+                        </form>
+                    </td>
                   <!--generate button with id-->
                 </tr>
                 @endforeach
